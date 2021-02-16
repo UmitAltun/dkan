@@ -120,6 +120,7 @@ class ResourceLocalizer {
         unlink($resource->getFilePath());
       }
       $this->getJobStoreFactory()->getInstance(FileFetcher::class)->remove($resource->getUniqueIdentifier());
+      // dispatch event to run datastoreService->drop($uuid).
     }
   }
 

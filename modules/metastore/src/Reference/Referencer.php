@@ -282,6 +282,8 @@ class Referencer {
       ]);
 
     if ($node = reset($nodes)) {
+      $node->set('moderation_state', 'published');
+      $node->save();
       return $node->uuid();
     }
     return NULL;

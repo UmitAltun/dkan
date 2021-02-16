@@ -117,7 +117,11 @@ class OrphanReferenceProcessor extends QueueWorkerBase implements ContainerFacto
               ]
           );
     if (FALSE !== ($reference = reset($references))) {
-      $reference->set('moderation_state', 'draft');
+      if ($property_id === 'distribution') {
+        // call ResourceMapper->remove($reference) to delete source record.
+      }
+      $reference->set('moderation_state', 'orphaned');
+      $reference->save();
     }
   }
 

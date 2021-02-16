@@ -123,6 +123,7 @@ class ResourceMapper {
   public function remove(Resource $resource) {
     if ($this->exists($resource->getIdentifier(), $resource->getPerspective(), $resource->getVersion())) {
       $this->store->remove($resource->getUniqueIdentifier());
+      // dispatch event to run ResourceLocalizer->remove($resource);
     }
   }
 
